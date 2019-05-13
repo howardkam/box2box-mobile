@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Copyright 2019 Angie.-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box 2 Box</title>
+    <script src="p5/p5.min.js"></script>
+    <script src="p5/p5.collide2d.min.js"></script>
+    <script src="p5/addons/p5.sound.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            /*background-image: url('cubes2.png');
+            background-size: cover;*/
+        }
+
+        #score {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 120px;
+            text-align: center;
+            color:black;
+            width: 90%;
+
+
+        }
+        #time {
+            font-size: 30px;
+            color:black;
+            width: 100%;
+        }
+
+    </style>
+
+</head>
+<div id="score">
+    <p id="show">BOX<span style="color:#EE2E31">2</span>BOX</p>
+    <p id="time">You have 30 seconds to capture as many boxes as you can. Use the mouse to move the red box on the blue box. </p>
+    <p id="time">Press ENTER to start</p>
+</div>
+
+<body>
+    <script>
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+
+
+        function setup() {
+            createCanvas(w, h);
+        }
+
+        function draw() {
+            clear();
+            background('rgba(255,255,255,0.5)');
+
+        }
+        function keyPressed() {
+            if (keyCode == "13") {
+                location.href="game.html";
+            }
+        }
+    </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-9984913-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-9984913-4');
+</script>
+
+</body>
+
+</html>

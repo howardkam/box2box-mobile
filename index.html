@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box 2 Box</title>
+    <script src="p5/p5.min.js"></script>
+    <script src="p5/p5.collide2d.min.js"></script>
+    <script src="p5/addons/p5.sound.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        #score {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 150px;
+            text-align: center;
+            color: rgba(31, 5, 26, 0.5);
+
+        }
+        #time, #highscore {
+            font-size: 30px;
+            width: 100%;
+        }
+
+    </style>
+
+</head>
+
+<div id="score">
+    <p id="show"></p>
+    <p id="time"></p>
+    <p id="highscore"></p>
+</div>
+
+<body>
+    <script>
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var barrier = new barrier();
+        var player = new player();
+        var uscore = 0;
+        var time;
+        var timeTotal = 30;
+        var hit = false;
+        var milliseconds;
+        //var oldHigh = localStorage.getItem('high');
+
+        function preload() {
+            sound = loadSound('shoot.mp3');
+            jingle = loadSound('jingle.mp3');
+        }
+        function setup() {
+            createCanvas(w, h);
+        }
+
+        function draw() {
+            clear();
+            background('rgba(255,255,255,0.25)');
+            player.show();
+            player.move();
+            player.kill();
+            barrier.show();
+            barrier.update();
+            keeptime();
+            noCursor();
+        }
+
+        function player() {
+            this.x = w / 2;
+            this.y = h / 2;
+            this.width = 50;
+            this.height = 50;
+            this.show = function () {
+                fill(color('#DF3B57'));
+                strokeWeight(0);
+                rect(this.x, this.y, this.width, this.height,5);
+            }
+            this.move = function () {
+                this.x = mouseX;
+                this.y = mouseY;
+            }
+            this.kill = function () {
+                hit = collideRectRect(this.x, this.y, this.width, this.height, barrier.x, barrier.y, barrier.width, barrier.height);
+                if (hit == true) {
+                    barrier.x = random(100, w - barrier.width);
+                    barrier.y = random(100, h - barrier.height);
+                    uscore++;
+                    sound.play();
+                    document.getElementById('show').innerHTML = uscore;
+                    
+                }
+            }
+        }
+        //Show score
+        document.getElementById('show').innerHTML = uscore;
+
+
+
+        function barrier() {
+            this.x = w / 2;
+            this.y = 10;
+            this.width = 100;
+            this.height = 100
+
+            this.show = function () {
+                fill(color('#0F7173'));
+                strokeWeight(0);
+                rect(this.x, this.y, this.width, this.height,5);
+            }
+            this.update = function() {
+                if ((uscore > 5) && (uscore < 20)) {
+                       this.width = 75;
+                       this.height = 75;
+                }
+                if ((uscore >= 20) && (uscore <= 45)) {
+                       this.width = 50;
+                       this.height = 50;
+                }
+                if (uscore > 45) {
+                       this.width = 25;
+                       this.height = 25;
+                }
+            }
+        }
+
+        function keeptime() {
+            milliseconds = millis() / 1000;
+            time = timeTotal - milliseconds;
+            if (time >= 0) {
+                document.getElementById('time').innerHTML = "Countdown: " + time.toFixed(0);
+
+            }
+            else {
+                document.getElementById('time').innerHTML = "GAME OVER. You averaged " + (uscore/30).toFixed(2) + " boxes per second." + "<br><br>" + "Press [ENTER] to play again.";
+                document.body.style.backgroundColor = '#210124';
+                document.getElementById('score').style.color = "#ffffff";
+                //document.getElementById('highscore').innerHTML = oldHigh;
+                jingle.play();
+                noLoop();
+            }
+        }
+        function keyPressed() {
+            if (keyCode == "13") {
+                //localStorage.setItem('high',uscore);
+                location.reload();
+            }
+        }
+    </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-9984913-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-9984913-4');
+</script>
+
+</body>
+
+</html>
