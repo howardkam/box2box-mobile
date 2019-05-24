@@ -49,19 +49,19 @@
 		<preference name="LoadingDialog" value="," />
 		<preference name="LoadUrlTimeoutValue" value="null" />
 		<platform name="ios">
-		<splash src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\1920x1280.png" width="2208" height="1242" /> 
+		<splash src="1920x1280.png" width="2208" height="1242" /> 
 		</platform>
 		<platform name="android">
-		<icon src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\72x72.png" qualifier="ldpi" />
-		<icon src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\1mdpi.png" qualifier="mdpi" />
-		<icon src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\15hdpi.png" qualifier="hdpi" />
-		<icon src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\2xhdpi.png" qualifier="xhdpi" />
-		<icon src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\3xxhdpi.png" qualifier="xxhdpi" />
-		<icon src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\4xxxhdpi.png" qualifier="xxxhdpi" />
-		<splash src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\240x320.png" qualifier="" />
-		<splash src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\320x240.png" qualifier="" />
-		<splash src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\1280x1980.png" qualifier="" />
-		<splash src="file://C:\Users\Howard Kam\Documents\GitHub\box2box-mobile\1920x1280.png" qualifier="" />
+		<icon src="72x72.png" qualifier="ldpi" />
+		<icon src="1mdpi.png" qualifier="mdpi" />
+		<icon src="15hdpi.png" qualifier="hdpi" />
+		<icon src="2xhdpi.png" qualifier="xhdpi" />
+		<icon src="3xxhdpi.png" qualifier="xxhdpi" />
+		<icon src="4xxxhdpi.png" qualifier="xxxhdpi" />
+		<splash src="240x320.png" qualifier="" />
+		<splash src="320x240.png" qualifier="" />
+		<splash src="1280x1980.png" qualifier="" />
+		<splash src="1920x1280.png" qualifier="" />
 		</platform>
 		<platform name="winphone">
 		</platform>
