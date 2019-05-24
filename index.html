@@ -144,30 +144,21 @@
 
             }
             else {
-                document.getElementById('time').innerHTML = "GAME OVER. You averaged " + (uscore/30).toFixed(2) + " boxes per second." + "<br><br>" + "Press [ENTER] to play again.";
+                document.getElementById('time').innerHTML = "GAME OVER. You averaged " + (uscore/30).toFixed(2) + " boxes per second.";
                 document.body.style.backgroundColor = '#210124';
                 document.getElementById('score').style.color = "#ffffff";
-                //document.getElementById('highscore').innerHTML = oldHigh;
                 jingle.play();
-                noLoop();
+                setTimeout(function(){ 
+                    location.reload(); 
+                }, 3000);
             }
         }
         function keyPressed() {
             if (keyCode == "13") {
-                //localStorage.setItem('high',uscore);
                 location.reload();
             }
         }
     </script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-9984913-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-9984913-4');
-</script>
 
 </body>
 
